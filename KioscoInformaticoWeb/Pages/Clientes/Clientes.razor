@@ -1,0 +1,82 @@
+﻿@page "/clientes"
+@inject IGenericService<Cliente> ClienteService
+@inject SweetAlertService sweetAlert
+
+<HeaderPage TitlePage="Clientes" />
+
+
+
+@if (clientes == null)
+{
+    <p><em>Obteniendo lista de Clientes</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>telefono</th>
+                <th></th>
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in clientes)
+            {
+                <tr>
+
+
+                    <td>@cliente.Id</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Direccion</td>
+                    <td>@cliente.Telefonos</td>
+                    <td>
+                        <a href="/editarcliente?IdclienteEditado=@cliente.Id"> Editar</a>
+                    </td>
+
+                    <td>
+                        <button title="Eliminar" class="btn btn-danger" @onclick="@(()=>Eliminar(cliente))">Eliminar</button>
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a href="/agregarcliente">Agregar cliente</a>
+
+@code {
+    private List<Cliente> clientes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        clientes = await ClienteService.GetAllAsync();
+    }
+
+    private async void Eliminar(Cliente cliente)
+    {
+        SweetAlertResult respuesta = await sweetAlert.FireAsync(new SweetAlertOptions
+            {
+                Title = "Borrando cliente",
+                Text = $"¿Está seguro que desea borrar al cliente {cliente.Nombre}",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Si, quiero borrarlo!",
+                CancelButtonText = "No, espera"
+            });
+        if (respuesta.IsConfirmed)
+        {
+            await ClienteService.DeleteAsync(cliente.Id);
+            clientes = await ClienteService.GetAllAsync();
+            StateHasChanged();
+        }
+    }
+}

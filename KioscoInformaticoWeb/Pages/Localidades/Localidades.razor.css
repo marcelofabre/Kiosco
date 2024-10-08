@@ -1,0 +1,14 @@
+﻿
+th {
+    background-color: #FF8C00; /* Dark Orange */
+    color: #FFF; /* White */
+}
+
+td {
+    background-color: #F5F5DC; /* Beige */
+    color: #333; /* Dark Grey */
+}
+
+tr:nth-child(even) {
+    background-color: #DCDCDC; /* Gainsboro (light grey) */
+}
