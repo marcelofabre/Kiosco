@@ -10,80 +10,77 @@ using System.Threading.Tasks;
 
 namespace KioscoInformaticoApp.ViewModels
 {
-
     public class ProductosViewModel : ObjectNotification
     {
-        private GenericService<Producto> ProductoService= new GenericService<Producto>();
+		private GenericService<Producto> productService= new GenericService<Producto>();
         private string filterProducts;
 
-        public string FilterProducts
-        {
-            get { return filterProducts; }
-            set
-            {
-                filterProducts = value;
-
+		public string FilterProducts
+		{
+			get { return filterProducts; }
+			set { filterProducts = value;
                 OnPropertyChanged();
-                // FilterProductsCollection();
-                FiltrarProductos(); 
-
+                FiltrarProductos();
             }
-        }
+		}
 
-        private ObservableCollection<Producto> productos;
-
-        public ObservableCollection<Producto> Productos
+        private bool _isRefreshing;
+        public bool IsRefreshing
         {
-            get { return productos; }
+            get => _isRefreshing;
             set
             {
-                productos = value;
-
+                _isRefreshing = value;
                 OnPropertyChanged();
             }
         }
 
-        private List<Producto> productosListToFilter;
-        public Command ObtenerProductosCommand { get; }
-        public Command FiltrarProductoCommand { get; }
+        private ObservableCollection<Producto> products;
+
+		public ObservableCollection<Producto> Products
+		{
+			get { return products; }
+			set { products = value;
+			OnPropertyChanged();
+            }
+		}
+
+        private List<Producto>? productListToFilter;
 
         private bool activityStart;
 
         public bool ActivityStart
         {
             get { return activityStart; }
-            set { activityStart = value;
+            set { activityStart = value; 
                 OnPropertyChanged();
-
             }
         }
 
 
+        public Command GetProductsCommand { get; }
+		public Command FilterProductsCommand { get; }
 
         public ProductosViewModel()
         {
-            ObtenerProductosCommand = new Command(async () => await ObtenerProductos());
-            FiltrarProductoCommand = new Command(async () => await FiltrarProductos());
-            ObtenerProductos();
+            GetProductsCommand = new Command(async () => await GetProducts());
+            FilterProductsCommand = new Command(async () => await FiltrarProductos());
+            GetProducts();
         }
 
-        public async Task FiltrarProductos()
+        private async Task FiltrarProductos()
         {
-            var productoFiltrado= productosListToFilter.Where(p => p.Nombre.ToUpper().Contains(FilterProducts));
-            Productos = new ObservableCollection<Producto>(productosListToFilter.Where(x => x.Nombre.ToUpper().Contains(FilterProducts.ToLower())));
-            
+            var productsLeaked = productListToFilter.Where(p => p.Nombre.ToLower().Contains(filterProducts.ToLower())).ToList();
+            Products = new ObservableCollection<Producto>(productsLeaked);
+        }   
 
-
-        }
-
-        private async Task ObtenerProductos()
+        private async Task GetProducts()
         {
-            filterProducts = string.Empty;
+            FilterProducts = string.Empty;
             ActivityStart = true;
-            productosListToFilter = await ProductoService.GetAllAsync();
-            Productos = new ObservableCollection<Producto>(productosListToFilter);
+            productListToFilter = await productService.GetAllAsync();
+            Products = new ObservableCollection<Producto>(productListToFilter);
             ActivityStart = false;
         }
     }
-
 }

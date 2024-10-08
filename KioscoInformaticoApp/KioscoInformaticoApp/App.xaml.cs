@@ -1,5 +1,4 @@
-﻿using KioscoInformaticoApp.ViewModels;
-using KioscoInformaticoApp.Views;
+﻿using KioscoInformaticoApp.Views;
 
 namespace KioscoInformaticoApp
 {
@@ -9,7 +8,8 @@ namespace KioscoInformaticoApp
         {
             InitializeComponent();
 
-            MainPage = new ProductoView();
+            //MainPage = new AppShell();
+            MainPage = new ProductosView();
         }
     }
 }

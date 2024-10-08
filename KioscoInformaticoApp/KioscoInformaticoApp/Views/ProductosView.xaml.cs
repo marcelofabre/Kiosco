@@ -1,8 +1,8 @@
 namespace KioscoInformaticoApp.Views;
 
-public partial class ProductoView : ContentPage
+public partial class ProductosView : ContentPage
 {
-	public ProductoView()
+	public ProductosView()
 	{
 		InitializeComponent();
 	}

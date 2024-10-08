@@ -10,7 +10,7 @@ namespace KioscoInformaticoApp.Class
 {
     public abstract class ObjectNotification : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         //CallerMemberName nos devuelve el nombre de la propiedad que fue modificada
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
