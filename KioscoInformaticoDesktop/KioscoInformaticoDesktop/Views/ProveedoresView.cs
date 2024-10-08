@@ -150,7 +150,6 @@ namespace KioscoInformaticoDesktop.Views
             txtCbu.Text = proveedorCurrent.Cbu;
             txtDireccion.Text = proveedorCurrent.Direccion;
             txtTelefonos.Text = proveedorCurrent.Telefonos;
-            //comboCondicionIva.SelectedValue = proveedorCurrent.CondicionIva;
             //comboLocalidades.SelectedValue = proveedorCurrent.LocalidadId;
             tabControl.SelectedTab = tabPageAgregarEditar;
         }

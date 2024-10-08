@@ -14,8 +14,13 @@ public partial class Producto
     [DataType(DataType.Currency)]
     [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
     public decimal Precio { get; set; }
+    public bool Eliminado { get; set; } = false;
+    public bool Oferta { get; set; } = false;
 
-    public virtual ICollection<Detallescompra> Detallescompras { get; set; } = new List<Detallescompra>();
+    //crear la conexion de la base de datos con heidi
+    //usuario:smartsof_marcelofabre
+    //contraseña:smartsof_marcelofabre
+    //dotnet ef migrations add inicio
+    //dotnet ef database update
 
-    public virtual ICollection<Detallesventa> Detallesventa { get; set; } = new List<Detallesventa>();
 }
