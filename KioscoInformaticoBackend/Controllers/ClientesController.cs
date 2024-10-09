@@ -22,30 +22,24 @@ namespace KioscoInformaticoServices.Controllers
         }
 
         // GET: api/Clientes
+        // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string? filtro)
         {
-            return await _context.Clientes.ToListAsync();
+            if (filtro != null)
+            {
+                return await _context.Clientes.Include(c => c.Localidad)
+                                              .Where(c => c.Nombre.ToUpper().Contains(filtro.ToUpper()))
+                                              .ToListAsync();
+            }
+            return await _context.Clientes.Include(c => c.Localidad).ToListAsync();
         }
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
-        //public async Task<ActionResult<Cliente>> GetCliente(int id)
-        //{
-        //    var cliente = await _context.Clientes.FindAsync(id);
-
-        //    if (cliente == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return cliente;
-        //}
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Clientes
-                .Include(c => c.Localidad) // Asegúrate de que 'Localidad' es una propiedad de navegación en 'Cliente'
-                .FirstOrDefaultAsync(c => c.Id == id); // Cambiamos FindAsync por FirstOrDefaultAsync
+            var cliente = await _context.Clientes.FindAsync(id);
 
             if (cliente == null)
             {
@@ -54,6 +48,7 @@ namespace KioscoInformaticoServices.Controllers
 
             return cliente;
         }
+
 
 
 
