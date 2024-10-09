@@ -73,7 +73,7 @@ namespace KioscoInformaticoServices.Controllers
             return NoContent();
         }
         //creamos un metodo get que retorne los productos que estan en ofertas
-        [HttpGet("getByOffer")]
+        [HttpGet("getinOffer")]
         public async Task<ActionResult<IEnumerable<Producto>>> GetProductosEnOferta()
         {
             return await _context.Productos.Where(p => p.Oferta == true).ToListAsync();
