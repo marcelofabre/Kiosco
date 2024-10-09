@@ -31,13 +31,13 @@ else
 
         <div class="form-group mb-2">
             <label for="FechaNacimiento">Fecha Nacimiento</label>
-            <InputText id="FechaNacimiento" class="form-control" @bind-Value="cliente.Telefonos" />
+            <InputDate id="FechaNacimiento" class="form-control" @bind-Value="cliente.FechaNacimiento" />
         </div>
 
-        <div class="form-group mb-2">
+        @* <div class="form-group mb-2">
             <label for="Localidad">Localidad</label>
-            <InputText id="Localidad" class="form-control" @bind-Value="cliente.Telefonos" />
-        </div>
+            <InputText id="Localidad" class="form-control" @bind-Value="cliente.Localidad" />
+        </div> *@
 
         <button type="submit" class="btn btn-primary mb-2">Guardar</button>
     </EditForm>
