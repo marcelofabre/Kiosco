@@ -30,9 +30,22 @@ namespace KioscoInformaticoServices.Controllers
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
+        //public async Task<ActionResult<Cliente>> GetCliente(int id)
+        //{
+        //    var cliente = await _context.Clientes.FindAsync(id);
+
+        //    if (cliente == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return cliente;
+        //}
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes
+                .Include(c => c.Localidad) // Asegúrate de que 'Localidad' es una propiedad de navegación en 'Cliente'
+                .FirstOrDefaultAsync(c => c.Id == id); // Cambiamos FindAsync por FirstOrDefaultAsync
 
             if (cliente == null)
             {
@@ -41,6 +54,9 @@ namespace KioscoInformaticoServices.Controllers
 
             return cliente;
         }
+
+
+
 
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
