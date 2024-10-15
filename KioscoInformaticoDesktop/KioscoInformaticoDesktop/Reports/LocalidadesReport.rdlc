@@ -154,7 +154,6 @@
       <ReportItems>
         <Line Name="Line1">
           <Top>2.05203cm</Top>
-          <Left>0cm</Left>
           <Height>0cm</Height>
           <Width>15.99587cm</Width>
           <Style>
@@ -197,7 +196,6 @@
         </Textbox>
         <Line Name="Line3">
           <Top>2.65203cm</Top>
-          <Left>0cm</Left>
           <Height>0cm</Height>
           <Width>15.99587cm</Width>
           <ZIndex>2</ZIndex>
@@ -281,7 +279,6 @@
       <ReportItems>
         <Line Name="Line2">
           <Top>0.03528cm</Top>
-          <Left>0cm</Left>
           <Height>0cm</Height>
           <Width>15.99587cm</Width>
           <Style>

@@ -13,11 +13,12 @@ using System.Windows.Forms;
 
 namespace KioscoInformaticoDesktop.ViewReports
 {
-    public partial class LocalidadesViewReport : Form
+   
+    public partial class ClientesViewReport : Form
     {
         ReportViewer reporte;
-        ILocalidadService localidadService = new LocalidadService();
-        public LocalidadesViewReport()
+        IClienteService ClienteService = new ClienteService();
+        public ClientesViewReport()
         {
 
             InitializeComponent();
@@ -28,11 +29,11 @@ namespace KioscoInformaticoDesktop.ViewReports
             Controls.Add(reporte);
         }
 
-        private async void LocalidadesViewReport_Load(object sender, EventArgs e)
+        private async void ClientesViewReport_Load(object sender, EventArgs e)
         {
-            reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.LocalidadesReport.rdlc";
-            var localidades = await localidadService.GetAllAsync();
-            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSLocalidades", localidades));
+            reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.ClientesReport.rdlc";
+            var clientes = await ClienteService.GetAllAsync();
+            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSClientes", clientes));
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
             //definimos zoom al 100%
             reporte.ZoomMode = ZoomMode.Percent;

@@ -41,9 +41,15 @@ namespace KioscoInformaticoDesktop
 
         private void iconMenuLocalidades_Click(object sender, EventArgs e)
         {
-           LocalidadesViewReport localidadesViewReport = new LocalidadesViewReport();
+            LocalidadesViewReport localidadesViewReport = new LocalidadesViewReport();
             localidadesViewReport.Show();
 
+        }
+
+        private void Clientes_Click(object sender, EventArgs e)
+        {
+            ClientesViewReport clientesViewReport = new ClientesViewReport();
+            clientesViewReport.Show();
         }
     }
 }

@@ -41,6 +41,7 @@
             ItemMEnuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
             iconMenuLocalidades = new FontAwesome.Sharp.IconMenuItem();
+            Clientes = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,8 +51,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, Bases, Salir, iconMenuItem4 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(700, 38);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(800, 40);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -63,7 +64,7 @@
             iconMenuItem1.IconSize = 30;
             iconMenuItem1.ImageScaling = ToolStripItemImageScaling.None;
             iconMenuItem1.Name = "iconMenuItem1";
-            iconMenuItem1.Size = new Size(95, 34);
+            iconMenuItem1.Size = new Size(110, 34);
             iconMenuItem1.Text = "Principal";
             // 
             // Bases
@@ -75,7 +76,7 @@
             Bases.IconSize = 30;
             Bases.ImageScaling = ToolStripItemImageScaling.None;
             Bases.Name = "Bases";
-            Bases.Size = new Size(78, 34);
+            Bases.Size = new Size(90, 34);
             Bases.Text = "Bases";
             // 
             // ItemMenuLocalidades
@@ -86,7 +87,7 @@
             ItemMenuLocalidades.IconSize = 30;
             ItemMenuLocalidades.ImageScaling = ToolStripItemImageScaling.None;
             ItemMenuLocalidades.Name = "ItemMenuLocalidades";
-            ItemMenuLocalidades.Size = new Size(153, 36);
+            ItemMenuLocalidades.Size = new Size(184, 36);
             ItemMenuLocalidades.Text = "Localidades";
             ItemMenuLocalidades.Click += ItemMenuLocalidades_Click;
             // 
@@ -96,7 +97,7 @@
             iconMenuItem2.IconColor = Color.Black;
             iconMenuItem2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem2.Name = "iconMenuItem2";
-            iconMenuItem2.Size = new Size(153, 36);
+            iconMenuItem2.Size = new Size(184, 36);
             iconMenuItem2.Text = "Productos";
             iconMenuItem2.Click += iconMenuItem2_Click;
             // 
@@ -106,7 +107,7 @@
             iconMenuItem3.IconColor = Color.Black;
             iconMenuItem3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem3.Name = "iconMenuItem3";
-            iconMenuItem3.Size = new Size(153, 36);
+            iconMenuItem3.Size = new Size(184, 36);
             iconMenuItem3.Text = "Clientes";
             iconMenuItem3.Click += iconMenuItem3_Click;
             // 
@@ -116,7 +117,7 @@
             Proveedores.IconColor = Color.Black;
             Proveedores.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Proveedores.Name = "Proveedores";
-            Proveedores.Size = new Size(153, 36);
+            Proveedores.Size = new Size(184, 36);
             Proveedores.Text = "Proveedores";
             Proveedores.Click += Proveedores_Click;
             // 
@@ -129,7 +130,7 @@
             Salir.IconSize = 30;
             Salir.ImageScaling = ToolStripItemImageScaling.None;
             Salir.Name = "Salir";
-            Salir.Size = new Size(71, 34);
+            Salir.Size = new Size(82, 34);
             Salir.Text = "Salir";
             // 
             // ItemMEnuSalirDelSistema
@@ -140,18 +141,18 @@
             ItemMEnuSalirDelSistema.IconSize = 30;
             ItemMEnuSalirDelSistema.ImageScaling = ToolStripItemImageScaling.None;
             ItemMEnuSalirDelSistema.Name = "ItemMEnuSalirDelSistema";
-            ItemMEnuSalirDelSistema.Size = new Size(172, 36);
+            ItemMEnuSalirDelSistema.Size = new Size(210, 36);
             ItemMEnuSalirDelSistema.Text = "Salir del sistema";
             ItemMEnuSalirDelSistema.Click += ItemMEnuSalirDelSistema_Click;
             // 
             // iconMenuItem4
             // 
-            iconMenuItem4.DropDownItems.AddRange(new ToolStripItem[] { iconMenuLocalidades });
+            iconMenuItem4.DropDownItems.AddRange(new ToolStripItem[] { iconMenuLocalidades, Clientes });
             iconMenuItem4.IconChar = FontAwesome.Sharp.IconChar.None;
             iconMenuItem4.IconColor = Color.Black;
             iconMenuItem4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem4.Name = "iconMenuItem4";
-            iconMenuItem4.Size = new Size(82, 34);
+            iconMenuItem4.Size = new Size(97, 34);
             iconMenuItem4.Text = "Listados";
             // 
             // iconMenuLocalidades
@@ -160,19 +161,28 @@
             iconMenuLocalidades.IconColor = Color.Black;
             iconMenuLocalidades.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuLocalidades.Name = "iconMenuLocalidades";
-            iconMenuLocalidades.Size = new Size(184, 26);
+            iconMenuLocalidades.Size = new Size(224, 26);
             iconMenuLocalidades.Text = "Localidades";
             iconMenuLocalidades.Click += iconMenuLocalidades_Click;
             // 
+            // Clientes
+            // 
+            Clientes.IconChar = FontAwesome.Sharp.IconChar.None;
+            Clientes.IconColor = Color.Black;
+            Clientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            Clientes.Name = "Clientes";
+            Clientes.Size = new Size(224, 26);
+            Clientes.Text = "Clientes";
+            Clientes.Click += Clientes_Click;
+            // 
             // MenuPrincipalView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GrayText;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 451);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "MenuPrincipalView";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Kiosco Informático Desktop";
@@ -196,5 +206,6 @@
         private FontAwesome.Sharp.IconMenuItem Proveedores;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem4;
         private FontAwesome.Sharp.IconMenuItem iconMenuLocalidades;
+        private FontAwesome.Sharp.IconMenuItem Clientes;
     }
 }
