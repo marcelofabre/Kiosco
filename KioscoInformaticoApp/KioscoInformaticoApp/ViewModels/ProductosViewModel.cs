@@ -12,7 +12,7 @@ namespace KioscoInformaticoApp.ViewModels
 {
     public class ProductosViewModel : ObjectNotification
     {
-		private GenericService<Producto> productService= new GenericService<Producto>();
+	    private ProductoService productService = new ProductoService();
         private string filterProducts;
 
 		public string FilterProducts
@@ -23,6 +23,18 @@ namespace KioscoInformaticoApp.ViewModels
                 FiltrarProductos();
             }
 		}
+
+        private ObservableCollection<Producto> products;
+
+        public ObservableCollection<Producto> Products
+        {
+            get { return products; }
+            set
+            {
+                products = value;
+                OnPropertyChanged();
+            }
+        }
 
         private bool _isRefreshing;
         public bool IsRefreshing
@@ -35,17 +47,9 @@ namespace KioscoInformaticoApp.ViewModels
             }
         }
 
-        private ObservableCollection<Producto> products;
+        
 
-		public ObservableCollection<Producto> Products
-		{
-			get { return products; }
-			set { products = value;
-			OnPropertyChanged();
-            }
-		}
-
-        private List<Producto>? productListToFilter;
+        private List<Producto>? ProductListToFilter;
 
         private bool activityStart;
 
@@ -70,7 +74,7 @@ namespace KioscoInformaticoApp.ViewModels
 
         private async Task FiltrarProductos()
         {
-            var productsLeaked = productListToFilter.Where(p => p.Nombre.ToLower().Contains(filterProducts.ToLower())).ToList();
+            var productsLeaked =  ProductListToFilter.Where(p => p.Nombre.ToLower().Contains(filterProducts.ToLower()));
             Products = new ObservableCollection<Producto>(productsLeaked);
         }   
 
@@ -78,8 +82,8 @@ namespace KioscoInformaticoApp.ViewModels
         {
             FilterProducts = string.Empty;
             ActivityStart = true;
-            productListToFilter = await productService.GetAllAsync();
-            Products = new ObservableCollection<Producto>(productListToFilter);
+            ProductListToFilter = await productService.GetAllInOfferAsync();
+            Products = new ObservableCollection<Producto>(ProductListToFilter);
             ActivityStart = false;
         }
     }

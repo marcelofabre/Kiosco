@@ -19,7 +19,8 @@
                VerticalOptions="Center"/>
         <ActivityIndicator IsRunning="{Binding ActivityStart}"/>
         <ScrollView HeightRequest="300" HorizontalOptions="Center">
-            <ListView ItemsSource="{Binding Products}"
+            <ListView 
+                      ItemsSource="{Binding Products}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
                       RefreshCommand="{Binding GetProductsCommand}">
@@ -27,10 +28,14 @@
                     <DataTemplate>
                         <TextCell Text="{Binding Nombre}"
                                   Detail="{Binding Precio}"
-                                  TextColor="White"/>
+                                 />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+           
+            
+            
         </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
