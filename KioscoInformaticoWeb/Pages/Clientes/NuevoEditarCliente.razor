@@ -1,10 +1,13 @@
-﻿@page "/agregarcliente"
+﻿@page "/nuevoeditarcliente"
 @inject IGenericService<Cliente> ClienteService
+@inject ILocalidadService LocalidadService
 @inject NavigationManager NavigationManager
+@inject SweetAlertService SweetAlert
+
 
 <HeaderPage TitlePage="Agregando cliente" />
 
-@if (cliente == null)
+@if (cliente == null|| localidades==null)
 {
     <p><em>Cargando...</em></p>
 }
@@ -34,12 +37,21 @@ else
             <InputDate id="FechaNacimiento" class="form-control" @bind-Value="cliente.FechaNacimiento" />
         </div>
 
-        @* <div class="form-group mb-2">
-            <label for="Localidad">Localidad</label>
-            <InputText id="Localidad" class="form-control" @bind-Value="cliente.Localidad" />
-        </div> *@
+        <div class="form-group mb-2">
+            <label for="IdLocalidad">Localidad:</label>
+            <InputSelect id="IdLocalidad" class="form-control" @bind-Value="cliente.LocalidadId">
+                <option value="">Seleccione una localidad</option>
+                @foreach (var localidad in localidades)
+                {
+                    <option value="@localidad.Id">@localidad.Nombre</option>
+                }
+            </InputSelect>
+          
+                </div>
 
         <button type="submit" class="btn btn-primary mb-2">Guardar</button>
+
+        <ValidationSummary />
     </EditForm>
 }
 
@@ -63,11 +75,14 @@ else
     [Parameter]
     public int IdClienteEditado { get; set; }
 
-    private Cliente cliente = new Cliente();
+    //escribir private es lo mismo que no escribir nada adelante, porque por defecto es privado
+    private Cliente cliente  ;
     private List<Cliente> clientes = new List<Cliente>();
+    List<Localidad>? localidades = new List<Localidad>();
 
     protected override async Task OnInitializedAsync()
     {
+
         // Si estamos editando, cargamos el cliente por su ID
         if (IdClienteEditado != 0)
         {
@@ -76,10 +91,17 @@ else
 
         // Cargamos la lista de clientes existentes
         clientes = await ClienteService.GetAllAsync();
+        localidades = await LocalidadService.GetAllAsync();
     }
 
     private async Task AgregarOActualizarCliente()
     {
+        if (cliente.LocalidadId == null)
+        {
+            await SweetAlert.FireAsync("Error", "Debe seleccionar una localidad", SweetAlertIcon.Error);
+            return;
+        }
+
         if (cliente != null)
         {
             if (IdClienteEditado == 0)
@@ -101,3 +123,6 @@ else
         }
     }
 }
+
+
+ 
