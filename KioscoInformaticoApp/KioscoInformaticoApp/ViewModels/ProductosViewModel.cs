@@ -1,4 +1,5 @@
-﻿using KioscoInformaticoApp.Class;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using KioscoInformaticoApp.Class;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
 using System;
@@ -49,27 +50,26 @@ namespace KioscoInformaticoApp.ViewModels
         
 
         private List<Producto>? ProductListToFilter;
-
-        private bool activityStart;
-
-        public bool ActivityStart
-        {
-            get { return activityStart; }
-            set { activityStart = value; 
-                OnPropertyChanged();
-            }
-        }
-
+        
+ 
 
         public Command GetProductsCommand { get; }
 		public Command FilterProductsCommand { get; }
+        public Command AddProducCommand { get; }
 
         public ProductosViewModel()
         {
             GetProductsCommand = new Command(async () => await GetProducts());
             FilterProductsCommand = new Command(async () => await FiltrarProductos());
+            AddProducCommand = new Command(async () => await AddProductos());
             GetProducts();
         }
+
+        private async Task AddProductos()
+        {
+            WeakReferenceMessenger.Default.Send(new Message("AgregarProducto"));
+        }
+        
 
         private async Task FiltrarProductos()
         {
@@ -77,13 +77,13 @@ namespace KioscoInformaticoApp.ViewModels
             Products = new ObservableCollection<Producto>(productsLeaked);
         }   
 
-        private async Task GetProducts()
+        public async Task GetProducts()
         {
             FilterProducts = string.Empty;
-            ActivityStart = true;
-            ProductListToFilter = await productService.GetAllAsync();
-            Products = new ObservableCollection<Producto>(ProductListToFilter);
-            ActivityStart = false;
+            IsRefreshing = true;//para que se muestre el refresh
+            ProductListToFilter = await productService.GetAllAsync();//obtiene todos los productos
+            Products = new ObservableCollection<Producto>(ProductListToFilter);//los muestra en la lista
+            IsRefreshing = false;//para que se detenga el refresh
         }
     }
 }

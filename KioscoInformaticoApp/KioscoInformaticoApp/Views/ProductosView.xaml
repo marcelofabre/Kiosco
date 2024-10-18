@@ -7,7 +7,9 @@
     <ContentPage.BindingContext>
         <viewModels:ProductosViewModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
+
+    <ScrollView HeightRequest="300" HorizontalOptions="Center">
+        <VerticalStackLayout>
         <Label 
             Text="LISTA DE PRODUCTOS"
             VerticalOptions="Center" 
@@ -18,12 +20,14 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
         <ActivityIndicator IsRunning="{Binding ActivityStart}"/>
-        <ScrollView HeightRequest="300" HorizontalOptions="Center">
+        
             <ListView 
                       ItemsSource="{Binding Products}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
-                      RefreshCommand="{Binding GetProductsCommand}">
+                      RefreshCommand="{Binding GetProductsCommand}"
+                      IsRefreshing="{Binding IsRefreshing}">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Nombre}"
@@ -33,9 +37,16 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-           
-            
-            
-        </ScrollView>
-    </VerticalStackLayout>
+
+            <Button Text="Agregar producto"
+                Command="{Binding AddProducCommand}"
+                HorizontalOptions="Center">
+
+            </Button>
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
