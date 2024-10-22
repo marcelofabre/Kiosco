@@ -17,6 +17,12 @@ public partial class Producto
     public bool Eliminado { get; set; } = false;
     public bool Oferta { get; set; } = false;
 
+    public override string ToString()
+    {
+        return Nombre;
+    }
+
+
     //crear la conexion de la base de datos con heidi
     //usuario:smartsof_marcelofabre
     //contraseña:smartsof_marcelofabre

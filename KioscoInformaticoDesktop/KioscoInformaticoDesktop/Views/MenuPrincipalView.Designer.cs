@@ -42,13 +42,14 @@
             iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
             iconMenuLocalidades = new FontAwesome.Sharp.IconMenuItem();
             Clientes = new FontAwesome.Sharp.IconMenuItem();
+            iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, Bases, Salir, iconMenuItem4 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, Bases, Salir, iconMenuItem4, iconMenuItem7 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(6, 3, 0, 3);
@@ -161,7 +162,7 @@
             iconMenuLocalidades.IconColor = Color.Black;
             iconMenuLocalidades.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuLocalidades.Name = "iconMenuLocalidades";
-            iconMenuLocalidades.Size = new Size(224, 26);
+            iconMenuLocalidades.Size = new Size(171, 26);
             iconMenuLocalidades.Text = "Localidades";
             iconMenuLocalidades.Click += iconMenuLocalidades_Click;
             // 
@@ -171,9 +172,19 @@
             Clientes.IconColor = Color.Black;
             Clientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Clientes.Name = "Clientes";
-            Clientes.Size = new Size(224, 26);
+            Clientes.Size = new Size(171, 26);
             Clientes.Text = "Clientes";
             Clientes.Click += Clientes_Click;
+            // 
+            // iconMenuItem7
+            // 
+            iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.NfcSymbol;
+            iconMenuItem7.IconColor = Color.Black;
+            iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconMenuItem7.Name = "iconMenuItem7";
+            iconMenuItem7.Size = new Size(86, 34);
+            iconMenuItem7.Text = "Ventas";
+            iconMenuItem7.Click += iconMenuItem7_Click;
             // 
             // MenuPrincipalView
             // 
@@ -207,5 +218,6 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem4;
         private FontAwesome.Sharp.IconMenuItem iconMenuLocalidades;
         private FontAwesome.Sharp.IconMenuItem Clientes;
+        private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
     }
 }
