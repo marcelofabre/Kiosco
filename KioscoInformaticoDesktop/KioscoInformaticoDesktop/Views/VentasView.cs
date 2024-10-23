@@ -1,4 +1,5 @@
 ﻿using KioscoInformaticoDesktop.ExtensionMethods;
+using KioscoInformaticoDesktop.ViewReports;
 using KioscoInformaticoServices.Enums;
 using KioscoInformaticoServices.Interfaces;
 using KioscoInformaticoServices.Models;
@@ -138,15 +139,20 @@ namespace KioscoInformaticoDesktop.Views
         private async void btnFinalizarVenta_Click(object sender, EventArgs e)
         {
             //cargamos los datos de la venta
-            ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
-            ventaCurrent.FormaPago = (FormaDePagoEnum)comboFormasDePago.SelectedValue;
-            ventaCurrent.Fecha = DateTime.Now;
-            ventaCurrent.Iva = ventaCurrent.Total * 0.21m;
-            ventaCurrent.Total = numericTotal.Value;
-            ventaCurrent.Cliente = null;
-            ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Producto = null);
-            ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Venta = null);
-            await ventaService.AddAsync(ventaCurrent);
+            Venta ventaTemp= new Venta();
+            ventaTemp.DetallesVenta = ventaCurrent.DetallesVenta;
+            ventaTemp.ClienteId = (int)comboClientes.SelectedValue;
+            ventaTemp.FormaPago = (FormaDePagoEnum)comboFormasDePago.SelectedValue;
+            ventaTemp.Fecha = DateTime.Now;
+            ventaTemp.Iva = ventaCurrent.Total * 0.21m;
+            ventaTemp.Total = numericTotal.Value;
+            ventaTemp.Cliente = null;
+            ventaTemp.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Producto = null);
+            ventaTemp.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Venta = null);
+            var nuevaVenta= await ventaService.AddAsync(ventaCurrent);
+            var facturaVentaViewReport = new FacturaVentaViewReport(ventaTemp);
+            facturaVentaViewReport.ShowDialog();
+
 
 
         }
