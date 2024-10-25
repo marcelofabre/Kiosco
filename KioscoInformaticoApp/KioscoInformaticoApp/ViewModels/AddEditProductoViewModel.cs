@@ -29,7 +29,7 @@ namespace KioscoInformaticoApp.ViewModels
 
         private decimal precio;
 
-            public decimal Preio
+            public decimal Precio
 
         {
             get { return precio; }
@@ -61,12 +61,12 @@ namespace KioscoInformaticoApp.ViewModels
 
         private async Task SaveProduct()
         {
-           var producto = new Producto()
-           {
-               Nombre = Nombre,
-               Precio = precio,
-               Oferta = Oferta
-           };
+            var producto = new Producto()
+            {
+                Nombre = this.Nombre,
+                Precio = this.Precio,
+                Oferta = this.Oferta
+            };
 
             await productoService.AddAsync(producto);
 
