@@ -23,6 +23,7 @@
         
             <ListView 
                       ItemsSource="{Binding Products}"
+                      SelectedItem="{Binding SelectedProduct}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
                       RefreshCommand="{Binding GetProductsCommand}"
@@ -44,6 +45,11 @@
 
             </Button>
 
+            <Button Text="Editar producto"
+                Command="{Binding EditProducCommand}"
+                HorizontalOptions="Center">
+
+            </Button>
 
 
 

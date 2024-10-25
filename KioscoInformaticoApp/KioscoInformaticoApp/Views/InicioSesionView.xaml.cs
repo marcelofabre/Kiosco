@@ -24,12 +24,17 @@ public partial class InicioSesionView : ContentPage
         }
         if (mensaje.Value == "AbrirOfertas")
         {
-            await Navigation.PushAsync(new ProductosView());
+            await Navigation.PushAsync(new ProductosEnOfertaView());
         }
 
         if (mensaje.Value == "AgregarProducto")
         {
-            await Navigation.PushAsync(new AddEditProductoView());
+            await Navigation.PushAsync(new AddEditProductoView(mensaje.ProductoAEditar));
+        }
+
+        if (mensaje.Value == "EditarProducto")
+        {
+            await Navigation.PushAsync(new AddEditProductoView(mensaje.ProductoAEditar));
         }
 
 
