@@ -43,7 +43,10 @@
             iconMenuLocalidades = new FontAwesome.Sharp.IconMenuItem();
             Clientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
+            toolStrip1 = new ToolStrip();
+            iconMenuVentas = new FontAwesome.Sharp.IconToolStripButton();
             menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -186,20 +189,48 @@
             iconMenuItem7.Text = "Ventas";
             iconMenuItem7.Click += iconMenuItem7_Click;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { iconMenuVentas });
+            toolStrip1.Location = new Point(0, 40);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(800, 57);
+            toolStrip1.TabIndex = 1;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // iconMenuVentas
+            // 
+            iconMenuVentas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconMenuVentas.IconChar = FontAwesome.Sharp.IconChar.Print;
+            iconMenuVentas.IconColor = Color.Black;
+            iconMenuVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconMenuVentas.IconSize = 30;
+            iconMenuVentas.ImageScaling = ToolStripItemImageScaling.None;
+            iconMenuVentas.ImageTransparentColor = Color.Magenta;
+            iconMenuVentas.Name = "iconMenuVentas";
+            iconMenuVentas.Size = new Size(120, 54);
+            iconMenuVentas.Text = "Historico Ventas";
+            iconMenuVentas.TextImageRelation = TextImageRelation.ImageAboveText;
+            iconMenuVentas.Click += iconMenuVentas_Click;
+            // 
             // MenuPrincipalView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GrayText;
             ClientSize = new Size(800, 451);
+            Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalView";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Kiosco Informático Desktop";
             WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,5 +250,7 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuLocalidades;
         private FontAwesome.Sharp.IconMenuItem Clientes;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
+        private ToolStrip toolStrip1;
+        private FontAwesome.Sharp.IconToolStripButton iconMenuVentas;
     }
 }

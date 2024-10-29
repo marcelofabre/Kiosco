@@ -7,12 +7,14 @@ namespace KioscoInformaticoServices.Models;
 public partial class Venta
 {
     public int Id { get; set; }
+    public DateTime Fecha { get; set; }
+    public int ClienteId { get; set; }
 
     public FormaDePagoEnum FormaPago { get; set; }
 
-    public int ClienteId { get; set; }
+   
 
-    public DateTime Fecha { get; set; }
+   
 
     public decimal Iva { get; set; }
 

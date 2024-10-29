@@ -26,5 +26,10 @@ public partial class Cliente
 
     public bool Eliminado { get; set; } = false;
 
-  
+    public override string ToString()
+    {
+        return Nombre;
+    }
+
+
 }
