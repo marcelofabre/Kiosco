@@ -18,7 +18,9 @@ namespace KioscoInformaticoDesktop.ViewReports
         ReportViewer reporte;
         private Venta? nuevaVenta;
 
-        public FacturaVentaViewReport()
+       
+
+        public FacturaVentaViewReport(Venta? nuevaVenta)
         {
 
             this.nuevaVenta = nuevaVenta;
@@ -28,27 +30,24 @@ namespace KioscoInformaticoDesktop.ViewReports
             Controls.Add(reporte);
         }
 
-        public FacturaVentaViewReport(Venta? nuevaVenta)
-        {
-            this.nuevaVenta = nuevaVenta;
-        }
-
         private void FacturaVentaViewReport_Load(object sender, EventArgs e)
         {
             reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.FacturaVentaReport.rdlc";
 
-           var venta= new { Id = nuevaVenta.Id, Fecha = nuevaVenta.Fecha, Cliente = nuevaVenta.Cliente.Nombre, FormaDePago = nuevaVenta.FormaPago, Total = nuevaVenta.Total };
+            List<object> venta=new List<object>{ new { Id = nuevaVenta.Id, Fecha = nuevaVenta.Fecha, ClienteNombre = nuevaVenta.Cliente.Nombre, FormaPago = nuevaVenta.FormaPago.ToString(), Total = nuevaVenta.Total } };
+            //.ToShortDateString() para hacer corta la fecha
 
-            var detalleVenta= nuevaVenta.DetallesVenta.Select(nuevaVenta => new { Producto = nuevaVenta.Producto.Nombre, Cantidad = nuevaVenta.Cantidad, Precio = nuevaVenta.PrecioUnitario, Subtotal = nuevaVenta.SubTotal });
+            var detalleVenta = nuevaVenta.DetallesVenta.Select(nuevaVenta => new { ProductoNombre = nuevaVenta.Producto.Nombre, Cantidad = nuevaVenta.Cantidad, PrecioUnitario = nuevaVenta.PrecioUnitario, SubTotal = nuevaVenta.SubTotal });
 
 
-            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSVenta", venta));
-            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSDetalllesVenta", detalleVenta));
+            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSVentas", venta));
+            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSDetallesVenta", detalleVenta));
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
             //definimos zoom al 100%
             reporte.ZoomMode = ZoomMode.Percent;
             reporte.ZoomPercent = 100;
             reporte.RefreshReport();
+            
 
         }
     }

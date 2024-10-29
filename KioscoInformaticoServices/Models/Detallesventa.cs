@@ -8,6 +8,8 @@ public partial class Detallesventa
 {
     public int Id { get; set; }
 
+    public virtual Producto? Producto { get; set; } = null!;
+
     public int VentaId { get; set; }
 
     public int ProductoId { get; set; }
@@ -18,7 +20,7 @@ public partial class Detallesventa
 
    
 
-    public virtual Producto? Producto { get; set; } = null!;
+    
 
     public virtual Venta? Venta { get; set; } = null!;
     public bool Eliminado { get; set; } = false;

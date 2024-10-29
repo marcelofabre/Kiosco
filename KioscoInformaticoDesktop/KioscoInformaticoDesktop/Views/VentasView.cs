@@ -168,6 +168,8 @@ namespace KioscoInformaticoDesktop.Views
             facturaVentaViewReport.ShowDialog();
 
 
+
+
         }
     }
 }

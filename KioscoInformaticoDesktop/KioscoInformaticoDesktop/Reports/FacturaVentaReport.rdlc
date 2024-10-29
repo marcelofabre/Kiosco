@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>19.0335cm</Width>
+              <Width>15.6445cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -34,7 +34,7 @@
                           <rd:DefaultName>ProductoNombre</rd:DefaultName>
                           <Top>0.40189cm</Top>
                           <Height>0.6cm</Height>
-                          <Width>2.5cm</Width>
+                          <Width>4.61666cm</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -53,7 +53,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!PrecioUnitario.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -61,7 +63,7 @@
                           </Paragraphs>
                           <rd:DefaultName>PrecioUnitario</rd:DefaultName>
                           <Top>0.40189cm</Top>
-                          <Left>5.8547cm</Left>
+                          <Left>5.00803cm</Left>
                           <Height>0.6cm</Height>
                           <Width>2.5cm</Width>
                           <ZIndex>1</ZIndex>
@@ -91,7 +93,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Cantidad</rd:DefaultName>
                           <Top>0.40189cm</Top>
-                          <Left>11.21925cm</Left>
+                          <Left>8.31003cm</Left>
                           <Height>0.6cm</Height>
                           <Width>2.5cm</Width>
                           <ZIndex>2</ZIndex>
@@ -113,7 +115,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!SubTotal.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -121,7 +125,7 @@
                           </Paragraphs>
                           <rd:DefaultName>SubTotal</rd:DefaultName>
                           <Top>0.40189cm</Top>
-                          <Left>15.01987cm</Left>
+                          <Left>13.1445cm</Left>
                           <Height>0.6cm</Height>
                           <Width>2.5cm</Width>
                           <ZIndex>3</ZIndex>
@@ -165,7 +169,7 @@
         <Top>0.14111cm</Top>
         <Left>0.35984cm</Left>
         <Height>1.46756cm</Height>
-        <Width>19.0335cm</Width>
+        <Width>15.6445cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -176,7 +180,7 @@
     <Height>0.63333in</Height>
     <Style />
   </Body>
-  <Width>7.95592in</Width>
+  <Width>6.43925in</Width>
   <Page>
     <PageHeader>
       <Height>4.14753cm</Height>
@@ -192,7 +196,7 @@
                 <TextRun>
                   <Value>Factura:</Value>
                   <Style>
-                    <FontSize>24pt</FontSize>
+                    <FontSize>18pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -290,7 +294,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
           <Top>0.2667cm</Top>
-          <Left>14.81667cm</Left>
+          <Left>10.51984cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
@@ -306,9 +310,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>1.61459cm</Top>
-          <Left>0.35984cm</Left>
+          <Left>0.35983cm</Left>
           <Height>0cm</Height>
-          <Width>19.28517cm</Width>
+          <Width>15.64451cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -320,7 +324,7 @@
           <Top>3.03276cm</Top>
           <Left>0.35983cm</Left>
           <Height>0cm</Height>
-          <Width>19.28517cm</Width>
+          <Width>15.64451cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -336,7 +340,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Sum(Fields!Id.Value, "DSVentas")</Value>
-                  <Style />
+                  <Style>
+                    <Format>0000000#</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
@@ -366,7 +372,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=First(Fields!Fecha.Value, "DSVentas")</Value>
-                  <Style />
+                  <Style>
+                    <Format>d</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
@@ -374,7 +382,7 @@
           </Paragraphs>
           <rd:DefaultName>Fecha</rd:DefaultName>
           <Top>0.2667cm</Top>
-          <Left>17.70803cm</Left>
+          <Left>13.50434cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>7</ZIndex>
@@ -433,8 +441,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.66887cm</Top>
-          <Left>8.62753cm</Left>
+          <Top>2.32693cm</Top>
+          <Left>5.36787cm</Left>
           <Height>0.6cm</Height>
           <Width>2.77517cm</Width>
           <ZIndex>9</ZIndex>
@@ -463,10 +471,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>FormaPago</rd:DefaultName>
-          <Top>0.66887cm</Top>
-          <Left>11.57909cm</Left>
+          <Top>2.32693cm</Top>
+          <Left>8.31943cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.69567cm</Width>
+          <Width>4.29917cm</Width>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
@@ -482,7 +490,7 @@
           <Top>4.00642cm</Top>
           <Left>0.35983cm</Left>
           <Height>0cm</Height>
-          <Width>19.28517cm</Width>
+          <Width>15.64451cm</Width>
           <ZIndex>11</ZIndex>
           <Style>
             <Border>
@@ -535,8 +543,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox23</rd:DefaultName>
-          <Top>3.26531cm</Top>
-          <Left>6.21453cm</Left>
+          <Top>3.23003cm</Top>
+          <Left>5.36787cm</Left>
           <Height>0.6cm</Height>
           <Width>1.357cm</Width>
           <ZIndex>13</ZIndex>
@@ -566,7 +574,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox23</rd:DefaultName>
           <Top>3.26531cm</Top>
-          <Left>11.8237cm</Left>
+          <Left>8.66987cm</Left>
           <Height>0.6cm</Height>
           <Width>1.81089cm</Width>
           <ZIndex>14</ZIndex>
@@ -587,7 +595,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>SubTotal::</Value>
+                  <Value>SubTotal:</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -595,10 +603,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox23</rd:DefaultName>
-          <Top>3.26531cm</Top>
-          <Left>15.3797cm</Left>
+          <Top>3.17387cm</Top>
+          <Left>13.50434cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.65333cm</Width>
+          <Width>1.88616cm</Width>
           <ZIndex>15</ZIndex>
           <Style>
             <Border>
@@ -623,10 +631,10 @@
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line3">
-          <Top>0.37042cm</Top>
+          <Top>0.3704cm</Top>
           <Left>0.35984cm</Left>
           <Height>0cm</Height>
-          <Width>19.28517cm</Width>
+          <Width>15.6445cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -648,7 +656,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.3685cm</Top>
+          <Top>1.36848cm</Top>
           <Left>6.21453cm</Left>
           <Height>0.6cm</Height>
           <Width>0.9125cm</Width>
@@ -678,8 +686,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.3685cm</Top>
-          <Left>11.8237cm</Left>
+          <Top>1.36848cm</Top>
+          <Left>10.13976cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>2</ZIndex>
@@ -701,15 +709,17 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Sum(Fields!Total.Value, "DSVentas")</Value>
-                  <Style />
+                  <Style>
+                    <Format>0.00;(0.00)</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Total</rd:DefaultName>
-          <Top>1.3685cm</Top>
-          <Left>14.81667cm</Left>
+          <Top>1.36848cm</Top>
+          <Left>13.50434cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
@@ -738,7 +748,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Iva</rd:DefaultName>
-          <Top>1.3685cm</Top>
+          <Top>1.36848cm</Top>
           <Left>7.46337cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
