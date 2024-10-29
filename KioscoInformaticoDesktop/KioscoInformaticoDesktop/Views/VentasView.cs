@@ -138,22 +138,34 @@ namespace KioscoInformaticoDesktop.Views
 
         private async void btnFinalizarVenta_Click(object sender, EventArgs e)
         {
+            ////cargamos los datos de la venta
+            //ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
+            //ventaCurrent.DetallesVenta = ventaCurrent.DetallesVenta;
+            //ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
+            //ventaCurrent.FormaPago = (FormaDePagoEnum)comboFormasDePago.SelectedValue;
+            //ventaCurrent.Fecha = DateTime.Now;
+
+            //ventaCurrent.Iva = ventaCurrent.Total * 0.21m;
+            //ventaCurrent.Total = numericTotal.Value;
+            //ventaCurrent.Cliente = null;
+            //ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Producto = null);
+            //ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Venta = null);
+            //var nuevaVenta= await ventaService.AddAsync(ventaCurrent);
+            //var facturaVentaViewReport = new FacturaVentaViewReport(ventaCurrent);
+            //facturaVentaViewReport.ShowDialog();
+
+
             //cargamos los datos de la venta
             ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
-            ventaCurrent.DetallesVenta = ventaCurrent.DetallesVenta;
-            ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
+            ventaCurrent.Cliente = (Cliente)comboClientes.SelectedItem;
             ventaCurrent.FormaPago = (FormaDePagoEnum)comboFormasDePago.SelectedValue;
             ventaCurrent.Fecha = DateTime.Now;
 
-            ventaCurrent.Iva = ventaCurrent.Total * 0.21m;
             ventaCurrent.Total = numericTotal.Value;
-            ventaCurrent.Cliente = null;
-            ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Producto = null);
-            ventaCurrent.DetallesVenta.ToList().ForEach(detalleventa => detalleventa.Venta = null);
-            var nuevaVenta= await ventaService.AddAsync(ventaCurrent);
-            var facturaVentaViewReport = new FacturaVentaViewReport(ventaCurrent);
+            ventaCurrent.Iva = ventaCurrent.Total * 0.21m;
+            var nuevaVenta = await ventaService.AddAsync(ventaCurrent);
+            var facturaVentaViewReport = new FacturaVentaViewReport(nuevaVenta);
             facturaVentaViewReport.ShowDialog();
-
 
 
         }
