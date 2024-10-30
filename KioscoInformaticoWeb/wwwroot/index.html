@@ -26,6 +26,56 @@
         <a href="" class="reload">Recargar</a>
         <a class="dismiss">🗙</a>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <!-- Configuración de Firebase -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCf5n4GEXeFsuGV3DpNdVyEdtb3_sQyX-c",
+            authDomain: "kioscoinformatico-ec154.firebaseapp.com",
+            projectId: "kioscoinformatico-ec154",
+            storageBucket: "kioscoinformatico-ec154.firebasestorage.app",
+            messagingSenderId: "528900882497",
+            appId: "1:528900882497:web:d8070223e8805f984ac6c0"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        console.log(firebase);
+        window.firebaseAuth = {
+            signInWithEmailPassword: async function (email, password) {
+                try {
+                    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                    return userCredential.user.uid;
+                } catch (error) {
+                    console.error("Error en autenticación:", error.message);
+                    return null;
+                }
+            },
+
+            signOut: async function () {
+                await firebase.auth().signOut();
+            }
+
+
+        };
+        
+        window.localStorageHelper = {
+            setItem: function (key, value) {
+                localStorage.setItem(key, value);
+            },
+            getItem: function (key) {
+                return localStorage.getItem(key);
+            },
+            removeItem: function (key) {
+                localStorage.removeItem(key);
+            }
+        };
+
+    </script>
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/CurrieTechnologies.Razor.SweetAlert2/sweetAlert2.min.js"></script>
 </body>
