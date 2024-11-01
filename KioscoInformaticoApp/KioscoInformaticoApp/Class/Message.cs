@@ -13,7 +13,7 @@ namespace KioscoInformaticoApp.Class
     public class Message : ValueChangedMessage<string>
     {
         public Producto ProductoAEditar { get; set; }
-        //    public Pelicula PeliculaAEditar { get; set; }
+        //public Pelicula PeliculaAEditar { get; set; }
 
         public Message(string value) : base(value)
         {

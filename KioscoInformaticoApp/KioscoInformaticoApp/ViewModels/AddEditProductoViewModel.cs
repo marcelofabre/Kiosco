@@ -90,7 +90,6 @@ namespace KioscoInformaticoApp.ViewModels
                     editProduct.Nombre = this.Nombre;
                     editProduct.Precio = this.Precio;
                     editProduct.Oferta = this.Oferta;
-                
 
                 await productoService.UpdateAsync(editProduct);
                
