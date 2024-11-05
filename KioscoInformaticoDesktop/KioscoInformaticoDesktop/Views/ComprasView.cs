@@ -31,25 +31,40 @@ namespace KioscoInformaticoDesktop.Views
 
         private async void AjustePantalla()
         {
-            #region Carga de combos
+            #region carga de combos
+            //Stopwatch reloj = new Stopwatch();
+            //reloj.Start();
+
             await Task.WhenAll(
+
                 Task.Run(async () => cboProveedores.DataSource = await proveedorService.GetAllAsync()),
                 Task.Run(async () => cboProductos.DataSource = await productoService.GetAllAsync())
                 );
 
-            cboProveedores.DisplayMember = "Nombre";
-            cboProveedores.ValueMember = "Id";
+
+            cboFormaPago.DisplayMember = "Nombre";
+            cboFormaPago.ValueMember = "Id";
+
+
 
             cboProductos.DisplayMember = "Nombre";
             cboProductos.ValueMember = "Id";
             cboProductos.SelectedIndex = -1;
 
-            cboFormaPago.DataSource = Enum.GetValues(typeof(FormaDePagoEnum));
-            #endregion
+            cboProveedores.DisplayMember = "Nombre";
+            cboProveedores.ValueMember = "Id";
+            cboProveedores.SelectedIndex = -1;
 
+            //reloj.Stop();
+            //Debug.Print($"tiempo de carga de combos:{reloj.ElapsedMilliseconds}ms");
+
+            cboFormaPago.DataSource = Enum.GetValues(typeof(FormaDePagoEnum));
+
+            #endregion
             numericPrecio.Value = 0;
             numericCantidad.Value = 1;
             gridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
+
         }
 
         private void cboProductos_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +110,7 @@ namespace KioscoInformaticoDesktop.Views
 
         private void gridDetallesCompra_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            gridDetallesCompra.OcultarColumnas(new string[] { "Id", "CompraId", "ProductoId", "Eliminado", "Compra" });
+            gridDetallesCompra.OcultarColumnas(new string[] { "Id", "CompraId", "ProductoId", "Eliminado", "Compra","ProductoId", "ProductosId" });
             btnQuitar.Enabled = gridDetallesCompra.RowCount > 0;
         }
 

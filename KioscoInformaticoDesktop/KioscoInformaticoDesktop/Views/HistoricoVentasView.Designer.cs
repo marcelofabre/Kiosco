@@ -40,6 +40,7 @@
             label2 = new Label();
             checkFiltrado = new CheckBox();
             numericTotalFacturado = new NumericUpDown();
+            btnImprimir = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridVentas).BeginInit();
             panelFiltrado.SuspendLayout();
@@ -60,10 +61,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Cascadia Mono", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(11, 12);
             label1.Name = "label1";
-            label1.Size = new Size(306, 39);
+            label1.Size = new Size(420, 45);
             label1.TabIndex = 0;
             label1.Text = "Historial de ventas ";
             // 
@@ -168,11 +169,22 @@
             numericTotalFacturado.TabIndex = 15;
             numericTotalFacturado.TextAlign = HorizontalAlignment.Right;
             // 
+            // btnImprimir
+            // 
+            btnImprimir.Location = new Point(694, 409);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(94, 29);
+            btnImprimir.TabIndex = 16;
+            btnImprimir.Text = "Imprimir";
+            btnImprimir.UseVisualStyleBackColor = true;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
             // HistoricoVentasView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnImprimir);
             Controls.Add(numericTotalFacturado);
             Controls.Add(checkFiltrado);
             Controls.Add(panelFiltrado);
@@ -203,5 +215,6 @@
         private Label label2;
         private Button btnFiltrar;
         private NumericUpDown numericTotalFacturado;
+        private Button btnImprimir;
     }
 }

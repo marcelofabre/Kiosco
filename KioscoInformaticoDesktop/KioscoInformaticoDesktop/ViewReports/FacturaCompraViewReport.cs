@@ -32,23 +32,28 @@ namespace KioscoInformaticoDesktop.ViewReports
 
         private void FacturaCompraViewReport_Load(object sender, EventArgs e)
         {
+           
+
+
+        }
+
+        private void FacturaCompraViewReport_Load_1(object sender, EventArgs e)
+        {
             reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.FacturaCompraReport.rdlc";
 
             List<object> Compra = new List<object> { new { Id = nuevaCompra.Id, Fecha = nuevaCompra.Fecha, ProveedorNombre = nuevaCompra.Proveedor.Nombre, FormaPago = nuevaCompra.FormaDePago.ToString(), Total = nuevaCompra.Total } };
             //.ToShortDateString() para hacer corta la fecha
 
-            //var detalleCompra = nuevaCompra.DetallesCompra.Select(nuevaCompra => new { ProductoNombre = nuevaCompra.Producto.Nombre, Cantidad = nuevaCompra.Cantidad, PrecioUnitario = nuevaCompra.PrecioUnitario, SubTotal = nuevaCompra.SubTotal });
+            var detalleCompra = nuevaCompra.DetalleCompras.Select(nuevaCompra => new { ProductoNombre = nuevaCompra.Producto.Nombre, Cantidad = nuevaCompra.Cantidad, PrecioUnitario = nuevaCompra.PrecioUnitario, Subtotal = nuevaCompra.Subtotal });
 
 
-            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSCompras", Compra));
-            //reporte.LocalReport.DataSources.Add(new ReportDataSource("DSDetallesCompra", detalleCompra));
+            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSCompra", Compra));
+            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSDetallesCompra", detalleCompra));
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
             //definimos zoom al 100%
             reporte.ZoomMode = ZoomMode.Percent;
             reporte.ZoomPercent = 100;
             reporte.RefreshReport();
-
-
         }
     }
 }

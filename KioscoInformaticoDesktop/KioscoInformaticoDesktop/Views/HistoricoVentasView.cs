@@ -1,6 +1,7 @@
 ﻿using KioscoInformaticoDesktop.ExtensionMethods;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
+using KioscoInformaticoDesktop.ViewReports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +18,12 @@ namespace KioscoInformaticoDesktop.Views
     {
         GenericService<Venta> _ventaService = new GenericService<Venta>();
         List<Venta> ventas = new List<Venta>();
+       
         public HistoricoVentasView()
         {
             InitializeComponent();
             LoadData();
+            
 
         }
 
@@ -34,7 +37,8 @@ namespace KioscoInformaticoDesktop.Views
 
         private void CalculeTotal()
         {
-            if(checkFiltrado.Checked){ 
+            if (checkFiltrado.Checked)
+            {
                 numericTotalFacturado.Value = ventas.Where(venta => venta.Fecha >= dateTimeDesde.Value &&
                                                      venta.Fecha <= dateTimeHasta.Value).Sum(venta => venta.Total);
 
@@ -43,13 +47,13 @@ namespace KioscoInformaticoDesktop.Views
             {
                 numericTotalFacturado.Value = ventas.Sum(venta => venta.Total);
             }
-          
+
 
         }
 
         private async void DisplayDataDrid()
         {
-            
+
             dataGridVentas.DataSource = ventas;
             dataGridVentas.OcultarColumnas(new string[] { "id", "Eliminado", "ClienteId", "DetallesVenta" });
             dataGridVentas.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -63,8 +67,10 @@ namespace KioscoInformaticoDesktop.Views
 
             if (checkFiltrado.Checked)
             {
-                dateTimeDesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                dateTimeDesde.Value = DateTime.Now;
+                dateTimeDesde.Value = new DateTime(DateTime.Now.Year,DateTime.Now.Month, 1);
+
+                dateTimeHasta.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month,DateTime.Now.Day,23,59,59);
+                //DateTime.Now.Day(23,59,00);
                 DisplayDataGridFilter();
                 CalculeTotal();
             }
@@ -73,12 +79,13 @@ namespace KioscoInformaticoDesktop.Views
             {
                 DisplayDataDrid();
                 CalculeTotal();
+
             }
         }
 
         private void DisplayDataGridFilter()
         {
-           
+
             dataGridVentas.DataSource = ventas.Where(venta => venta.Fecha >= dateTimeDesde.Value &&
                                                      venta.Fecha <= dateTimeHasta.Value).ToList();
 
@@ -94,6 +101,27 @@ namespace KioscoInformaticoDesktop.Views
         {
             DisplayDataGridFilter();
             CalculeTotal();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            var TituloReporte = "Listado de Ventas";
+            var ventasAImprimir = ventas;
+          
+            if (checkFiltrado.Checked)
+            {
+                ventasAImprimir  = ventas.Where(venta => venta.Fecha >= dateTimeDesde.Value &&
+                                                     venta.Fecha <= dateTimeHasta.Value).ToList();
+
+                TituloReporte = $"Listado de Ventas desde {dateTimeDesde.Value.ToShortDateString()} hasta {dateTimeHasta.Value.ToShortDateString()}";
+
+            }
+            
+           
+            var HistoricoVentasViewReport = new HistoricoVentasViewReport(ventasAImprimir, TituloReporte);
+            HistoricoVentasViewReport.ShowDialog();
+
+
         }
     }
 }

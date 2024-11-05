@@ -32,7 +32,7 @@ namespace KioscoInformaticoServices.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Compra>> GetCompra(int id)
         {
-            var compra = await _context.Compras.FindAsync(id);
+            var compra = await _context.Compras.Include(compra=>compra.Proveedor).Include(compra=>compra.DetalleCompras).ThenInclude(detalle=>detalle.Producto).Where(compra=>compra.Id.Equals(id)).FirstOrDefaultAsync();
 
             if (compra == null)
             {
@@ -78,6 +78,15 @@ namespace KioscoInformaticoServices.Controllers
         [HttpPost]
         public async Task<ActionResult<Compra>> PostCompra(Compra compra)
         {
+            // Adjuntar Localidad y Cliente para evitar su inserción
+            _context.Attach(compra.Proveedor.Localidad);
+            _context.Attach(compra.Proveedor);
+
+            // Adjuntar los productos en los detalles para evitar su inserción
+            foreach (var detalle in compra.DetalleCompras)
+            {
+                _context.Attach(detalle.Producto);
+            }
             _context.Compras.Add(compra);
             await _context.SaveChangesAsync();
 

@@ -174,7 +174,7 @@
         </TablixRowHierarchy>
         <DataSetName>DSDetallesCompra</DataSetName>
         <Top>1.10244cm</Top>
-        <Left>1.65108cm</Left>
+        <Left>0.74559cm</Left>
         <Height>0.70583cm</Height>
         <Width>13.35839cm</Width>
         <ZIndex>1</ZIndex>
@@ -199,8 +199,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.17639cm</Top>
-        <Left>1.65108cm</Left>
+        <Top>0.23256cm</Top>
+        <Left>0.7832cm</Left>
         <Height>0.6cm</Height>
         <Width>1.97083cm</Width>
         <ZIndex>2</ZIndex>
@@ -324,6 +324,7 @@
                 <TextRun>
                   <Value>FACTURA</Value>
                   <Style>
+                    <FontFamily>Arial Black</FontFamily>
                     <FontSize>22pt</FontSize>
                   </Style>
                 </TextRun>
@@ -332,10 +333,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.28787cm</Top>
           <Left>0.49953cm</Left>
-          <Height>0.93867cm</Height>
-          <Width>4.10867cm</Width>
+          <Height>1.26181cm</Height>
+          <Width>4.59222cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -396,7 +396,7 @@
           <Top>2.30576cm</Top>
           <Left>0.49953cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.4205cm</Width>
+          <Width>2.2545cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -424,7 +424,7 @@
           </Paragraphs>
           <rd:DefaultName>ProveedorNombre</rd:DefaultName>
           <Top>2.30576cm</Top>
-          <Left>2.1082cm</Left>
+          <Left>2.93042cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>

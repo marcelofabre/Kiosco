@@ -252,7 +252,7 @@ public partial class KioscoContext : DbContext
             {
                 Id = 1,
                 FormaDePago = FormaDePagoEnum.Efectivo,
-                Iva = CondicionIvaEnum.Responsable_No_Inscripto,
+                //Iva = CondicionIvaEnum.Responsable_No_Inscripto,
                 Total = 1000,
                 Fecha = new DateTime(2021, 5, 15),
                 ProveedorId = 1
@@ -261,7 +261,7 @@ public partial class KioscoContext : DbContext
             {
                 Id = 2,
                 FormaDePago = FormaDePagoEnum.Tarjeta_Credito,
-                Iva = CondicionIvaEnum.Responsable_Inscripto,
+                //Iva = CondicionIvaEnum.Responsable_Inscripto,
                 Total = 2000,
                 Fecha = new DateTime(2021, 5, 16),
                 ProveedorId = 2
@@ -270,7 +270,7 @@ public partial class KioscoContext : DbContext
             {
                 Id = 3,
                 FormaDePago = FormaDePagoEnum.Tarjeta_Debito,
-                Iva = CondicionIvaEnum.Responsable_Inscripto,
+                //Iva = CondicionIvaEnum.Responsable_Inscripto,
                 Total = 3000,
                 Fecha = new DateTime(2021, 5, 17),
                 ProveedorId = 3

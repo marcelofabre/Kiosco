@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:DSProveedor" ZOrder="5" X="612" Y="175" Height="125" Width="162" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="28" SplitterPosition="121" />
     <Shape ID="DesignTable:DSVentas" ZOrder="4" X="181" Y="340" Height="171" Width="152" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="167" />
     <Shape ID="DesignTable:DSDetallesVenta" ZOrder="3" X="386" Y="359" Height="125" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:DSCompras" ZOrder="2" X="610" Y="358" Height="143" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
+    <Shape ID="DesignTable:DSCompras" ZOrder="2" X="610" Y="358" Height="172" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
     <Shape ID="DesignTable:DSDetallesCompra" ZOrder="1" X="834" Y="365" Height="105" Width="174" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
   </Shapes>
   <Connectors />
