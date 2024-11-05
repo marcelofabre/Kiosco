@@ -45,6 +45,8 @@
             iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
             toolStrip1 = new ToolStrip();
             iconMenuVentas = new FontAwesome.Sharp.IconToolStripButton();
+            iconToolStripButton1 = new FontAwesome.Sharp.IconToolStripButton();
+            Compra = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -52,11 +54,11 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, Bases, Salir, iconMenuItem4, iconMenuItem7 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, Bases, Salir, iconMenuItem4, iconMenuItem7, Compra });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(6, 3, 0, 3);
-            menuStrip1.Size = new Size(800, 40);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(700, 38);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -68,7 +70,7 @@
             iconMenuItem1.IconSize = 30;
             iconMenuItem1.ImageScaling = ToolStripItemImageScaling.None;
             iconMenuItem1.Name = "iconMenuItem1";
-            iconMenuItem1.Size = new Size(110, 34);
+            iconMenuItem1.Size = new Size(95, 34);
             iconMenuItem1.Text = "Principal";
             // 
             // Bases
@@ -80,7 +82,7 @@
             Bases.IconSize = 30;
             Bases.ImageScaling = ToolStripItemImageScaling.None;
             Bases.Name = "Bases";
-            Bases.Size = new Size(90, 34);
+            Bases.Size = new Size(78, 34);
             Bases.Text = "Bases";
             // 
             // ItemMenuLocalidades
@@ -91,7 +93,7 @@
             ItemMenuLocalidades.IconSize = 30;
             ItemMenuLocalidades.ImageScaling = ToolStripItemImageScaling.None;
             ItemMenuLocalidades.Name = "ItemMenuLocalidades";
-            ItemMenuLocalidades.Size = new Size(184, 36);
+            ItemMenuLocalidades.Size = new Size(153, 36);
             ItemMenuLocalidades.Text = "Localidades";
             ItemMenuLocalidades.Click += ItemMenuLocalidades_Click;
             // 
@@ -101,7 +103,7 @@
             iconMenuItem2.IconColor = Color.Black;
             iconMenuItem2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem2.Name = "iconMenuItem2";
-            iconMenuItem2.Size = new Size(184, 36);
+            iconMenuItem2.Size = new Size(153, 36);
             iconMenuItem2.Text = "Productos";
             iconMenuItem2.Click += iconMenuItem2_Click;
             // 
@@ -111,7 +113,7 @@
             iconMenuItem3.IconColor = Color.Black;
             iconMenuItem3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem3.Name = "iconMenuItem3";
-            iconMenuItem3.Size = new Size(184, 36);
+            iconMenuItem3.Size = new Size(153, 36);
             iconMenuItem3.Text = "Clientes";
             iconMenuItem3.Click += iconMenuItem3_Click;
             // 
@@ -121,7 +123,7 @@
             Proveedores.IconColor = Color.Black;
             Proveedores.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Proveedores.Name = "Proveedores";
-            Proveedores.Size = new Size(184, 36);
+            Proveedores.Size = new Size(153, 36);
             Proveedores.Text = "Proveedores";
             Proveedores.Click += Proveedores_Click;
             // 
@@ -134,7 +136,7 @@
             Salir.IconSize = 30;
             Salir.ImageScaling = ToolStripItemImageScaling.None;
             Salir.Name = "Salir";
-            Salir.Size = new Size(82, 34);
+            Salir.Size = new Size(71, 34);
             Salir.Text = "Salir";
             // 
             // ItemMEnuSalirDelSistema
@@ -145,7 +147,7 @@
             ItemMEnuSalirDelSistema.IconSize = 30;
             ItemMEnuSalirDelSistema.ImageScaling = ToolStripItemImageScaling.None;
             ItemMEnuSalirDelSistema.Name = "ItemMEnuSalirDelSistema";
-            ItemMEnuSalirDelSistema.Size = new Size(210, 36);
+            ItemMEnuSalirDelSistema.Size = new Size(172, 36);
             ItemMEnuSalirDelSistema.Text = "Salir del sistema";
             ItemMEnuSalirDelSistema.Click += ItemMEnuSalirDelSistema_Click;
             // 
@@ -156,7 +158,7 @@
             iconMenuItem4.IconColor = Color.Black;
             iconMenuItem4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem4.Name = "iconMenuItem4";
-            iconMenuItem4.Size = new Size(97, 34);
+            iconMenuItem4.Size = new Size(82, 34);
             iconMenuItem4.Text = "Listados";
             // 
             // iconMenuLocalidades
@@ -165,7 +167,7 @@
             iconMenuLocalidades.IconColor = Color.Black;
             iconMenuLocalidades.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuLocalidades.Name = "iconMenuLocalidades";
-            iconMenuLocalidades.Size = new Size(171, 26);
+            iconMenuLocalidades.Size = new Size(136, 22);
             iconMenuLocalidades.Text = "Localidades";
             iconMenuLocalidades.Click += iconMenuLocalidades_Click;
             // 
@@ -175,7 +177,7 @@
             Clientes.IconColor = Color.Black;
             Clientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Clientes.Name = "Clientes";
-            Clientes.Size = new Size(171, 26);
+            Clientes.Size = new Size(136, 22);
             Clientes.Text = "Clientes";
             Clientes.Click += Clientes_Click;
             // 
@@ -185,17 +187,17 @@
             iconMenuItem7.IconColor = Color.Black;
             iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem7.Name = "iconMenuItem7";
-            iconMenuItem7.Size = new Size(86, 34);
+            iconMenuItem7.Size = new Size(73, 34);
             iconMenuItem7.Text = "Ventas";
             iconMenuItem7.Click += iconMenuItem7_Click;
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { iconMenuVentas });
-            toolStrip1.Location = new Point(0, 40);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { iconMenuVentas, iconToolStripButton1 });
+            toolStrip1.Location = new Point(0, 38);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 57);
+            toolStrip1.Size = new Size(700, 52);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -209,20 +211,45 @@
             iconMenuVentas.ImageScaling = ToolStripItemImageScaling.None;
             iconMenuVentas.ImageTransparentColor = Color.Magenta;
             iconMenuVentas.Name = "iconMenuVentas";
-            iconMenuVentas.Size = new Size(120, 54);
+            iconMenuVentas.Size = new Size(96, 49);
             iconMenuVentas.Text = "Historico Ventas";
             iconMenuVentas.TextImageRelation = TextImageRelation.ImageAboveText;
             iconMenuVentas.Click += iconMenuVentas_Click;
             // 
+            // iconToolStripButton1
+            // 
+            iconToolStripButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconToolStripButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
+            iconToolStripButton1.IconColor = Color.Black;
+            iconToolStripButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconToolStripButton1.IconSize = 30;
+            iconToolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
+            iconToolStripButton1.ImageTransparentColor = Color.Magenta;
+            iconToolStripButton1.Name = "iconToolStripButton1";
+            iconToolStripButton1.Size = new Size(110, 49);
+            iconToolStripButton1.Text = "Historico Compras";
+            iconToolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
+            // 
+            // Compra
+            // 
+            Compra.IconChar = FontAwesome.Sharp.IconChar.NfcSymbol;
+            Compra.IconColor = Color.Black;
+            Compra.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            Compra.Name = "Compra";
+            Compra.Size = new Size(87, 34);
+            Compra.Text = "Compras";
+            Compra.Click += Compra_Click;
+            // 
             // MenuPrincipalView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GrayText;
-            ClientSize = new Size(800, 451);
+            ClientSize = new Size(700, 338);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MenuPrincipalView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Kiosco Informático Desktop";
@@ -252,5 +279,7 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
         private ToolStrip toolStrip1;
         private FontAwesome.Sharp.IconToolStripButton iconMenuVentas;
+        private FontAwesome.Sharp.IconToolStripButton iconToolStripButton1;
+        private FontAwesome.Sharp.IconMenuItem Compra;
     }
 }

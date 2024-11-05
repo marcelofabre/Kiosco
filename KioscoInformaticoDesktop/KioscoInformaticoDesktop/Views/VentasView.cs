@@ -39,7 +39,7 @@ namespace KioscoInformaticoDesktop.Views
 
             await Task.WhenAll(
 
-                Task.Run(async () => comboClientes.DataSource = await clienteService.GetAllAsync()),
+                Task.Run(async () => comboCliente.DataSource = await clienteService.GetAllAsync()),
                 Task.Run(async () => comboProductos.DataSource = await productoService.GetAllAsync())
                 );
 
@@ -53,9 +53,9 @@ namespace KioscoInformaticoDesktop.Views
             comboProductos.ValueMember = "Id";
             comboProductos.SelectedIndex = -1;
 
-            comboClientes.DisplayMember = "Nombre";
-            comboClientes.ValueMember = "Id";
-            comboClientes.SelectedIndex = -1;
+            comboCliente.DisplayMember = "Nombre";
+            comboCliente.ValueMember = "Id";
+            comboCliente.SelectedIndex = -1;
 
             //reloj.Stop();
             //Debug.Print($"tiempo de carga de combos:{reloj.ElapsedMilliseconds}ms");
@@ -156,8 +156,8 @@ namespace KioscoInformaticoDesktop.Views
 
 
             //cargamos los datos de la venta
-            ventaCurrent.ClienteId = (int)comboClientes.SelectedValue;
-            ventaCurrent.Cliente = (Cliente)comboClientes.SelectedItem;
+            ventaCurrent.ClienteId = (int)comboCliente.SelectedValue;
+            ventaCurrent.Cliente = (Cliente)comboCliente.SelectedItem;
             ventaCurrent.FormaPago = (FormaDePagoEnum)comboFormasDePago.SelectedValue;
             ventaCurrent.Fecha = DateTime.Now;
 

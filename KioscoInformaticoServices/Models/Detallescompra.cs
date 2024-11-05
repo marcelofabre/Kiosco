@@ -19,4 +19,6 @@ public partial class Detallescompra
 
     public virtual Producto? Producto { get; set; }
     public bool Eliminado { get; set; } = false;
+
+    public decimal Subtotal => PrecioUnitario * Cantidad;
 }

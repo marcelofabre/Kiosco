@@ -10,9 +10,9 @@ public partial class Compra
 
     public FormaDePagoEnum FormaDePago { get; set; }
 
-    public CondicionIvaEnum Iva { get; set; }
+    public decimal Iva { get; set; }
 
-    public int Total { get; set; }
+    public decimal Total { get; set; }
 
     public DateTime Fecha { get; set; }
 
@@ -20,4 +20,6 @@ public partial class Compra
 
     public virtual Proveedor? Proveedor { get; set; }
     public bool Eliminado { get; set; } = false;
+
+    public virtual ICollection<Detallescompra> DetalleCompras { get; set; } = new List<Detallescompra>();
 }
