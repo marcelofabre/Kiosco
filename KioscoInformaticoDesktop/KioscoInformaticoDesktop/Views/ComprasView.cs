@@ -33,86 +33,38 @@ namespace KioscoInformaticoDesktop.Views
         {
             #region Carga de combos
             await Task.WhenAll(
-                Task.Run(async () => comboProveedor.DataSource = await proveedorService.GetAllAsync()),
-                Task.Run(async () => comboProveedor.DataSource = await productoService.GetAllAsync())
+                Task.Run(async () => cboProveedores.DataSource = await proveedorService.GetAllAsync()),
+                Task.Run(async () => cboProductos.DataSource = await productoService.GetAllAsync())
                 );
 
-            comboProveedor.DisplayMember = "Nombre";
-            comboProveedor.ValueMember = "Id";
+            cboProveedores.DisplayMember = "Nombre";
+            cboProveedores.ValueMember = "Id";
 
-            comboProveedor.DisplayMember = "Nombre";
-            comboProveedor.ValueMember = "Id";
-            comboProveedor.SelectedIndex = -1;
+            cboProductos.DisplayMember = "Nombre";
+            cboProductos.ValueMember = "Id";
+            cboProductos.SelectedIndex = -1;
 
-            comboFormasDePago.DataSource = Enum.GetValues(typeof(FormaDePagoEnum));
+            cboFormaPago.DataSource = Enum.GetValues(typeof(FormaDePagoEnum));
             #endregion
 
             numericPrecio.Value = 0;
             numericCantidad.Value = 1;
-            dataGridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
+            gridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
         }
 
-
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void cboProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var detalleCompra = new Detallescompra
+            if (cboProductos.SelectedIndex != -1)
             {
-                Producto = (Producto)comboProductos.SelectedItem,
-                ProductoId = (int)comboProductos.SelectedValue,
-                Cantidad = (int)numericCantidad.Value,
-                PrecioUnitario = numericPrecio.Value
-
-            };
-            compra.DetalleCompras.Add(detalleCompra);
-            dataGridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
-            comboProductos.SelectedIndex = -1;
-            comboProductos.Focus();
-            ActualizarTotalFactura();
-        }
-
-        private void ActualizarTotalFactura()
-        {
-            numericTotal.Value = compra.DetalleCompras.Sum(detallecompras => detallecompras.Subtotal);
-        }
-
-        private void gridDetallesCompra_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            dataGridDetallesCompra.OcultarColumnas(new string[] { "Id", "CompraId", "ProductoId", "Eliminado", "Compra" });
-            btnQuitar.Enabled = dataGridDetallesCompra.RowCount > 0;
-        }
-
-        private void btnQuitar_Click(object sender, EventArgs e)
-        {
-            if (dataGridDetallesCompra.CurrentRow == null)
-            {
-                MessageBox.Show("Debe seleccionar un detalle de compra");
-                return;
-            }
-            var detalleCompra = (Detallescompra)dataGridDetallesCompra.CurrentRow.DataBoundItem;
-            compra.DetalleCompras.Remove(detalleCompra);
-            dataGridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
-            ActualizarTotalFactura();
-        }
-
-        private void numericSubtotal_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericCantidad_ValueChanged_1(object sender, EventArgs e)
-        {
-            numericSubtotal.Value = numericPrecio.Value * numericCantidad.Value;
-        }
-
-        private void comboProductos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboProductos.SelectedIndex != -1)
-            {
-                Producto producto = (Producto)comboProductos.SelectedItem;
+                Producto producto = (Producto)cboProductos.SelectedItem;
                 numericPrecio.Value = producto.Precio;
             }
-            btnAgregar.Enabled = comboProductos.SelectedIndex != -1;
+            btnAgregar.Enabled = cboProductos.SelectedIndex != -1;
+        }
+
+        private void numericCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            numericSubtotal.Value = numericPrecio.Value * numericCantidad.Value;
         }
 
         private void numericPrecio_ValueChanged(object sender, EventArgs e)
@@ -120,21 +72,58 @@ namespace KioscoInformaticoDesktop.Views
             numericSubtotal.Value = numericPrecio.Value * numericCantidad.Value;
         }
 
-        private void comboProductos_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             var detalleCompra = new Detallescompra
             {
-                Producto = (Producto)comboProductos.SelectedItem,
-                ProductoId = (int)comboProductos.SelectedValue,
+                Producto = (Producto)cboProductos.SelectedItem,
+                ProductoId = (int)cboProductos.SelectedValue,
                 Cantidad = (int)numericCantidad.Value,
                 PrecioUnitario = numericPrecio.Value
-
             };
             compra.DetalleCompras.Add(detalleCompra);
-            dataGridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
-            comboProductos.SelectedIndex = -1;
-            comboProductos.Focus();
+            gridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
+            cboProductos.SelectedIndex = -1;
+            cboProductos.Focus();
             ActualizarTotalFactura();
+        }
+
+        private void ActualizarTotalFactura()
+        {
+            numericTotal.Value = compra.DetalleCompras.Sum(dc => dc.Subtotal);
+        }
+
+        private void gridDetallesCompra_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            gridDetallesCompra.OcultarColumnas(new string[] { "Id", "CompraId", "ProductoId", "Eliminado", "Compra" });
+            btnQuitar.Enabled = gridDetallesCompra.RowCount > 0;
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            if (gridDetallesCompra.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un detalle de compra");
+                return;
+            }
+            var detalleCompra = (Detallescompra)gridDetallesCompra.CurrentRow.DataBoundItem;
+            compra.DetalleCompras.Remove(detalleCompra);
+            gridDetallesCompra.DataSource = compra.DetalleCompras.ToList();
+            ActualizarTotalFactura();
+        }
+
+        private async void btnFinalizarCompra_Click(object sender, EventArgs e)
+        {
+            compra.ProveedorId = (int)cboProveedores.SelectedValue;
+            compra.Proveedor = (Proveedor)cboProveedores.SelectedItem;
+            compra.FormaDePago = (FormaDePagoEnum)cboFormaPago.SelectedValue;
+            compra.Fecha = DateTime.Now;
+
+            compra.Total = numericTotal.Value;
+            compra.Iva = compra.Total * 0.21m;
+            var nuevaCompra = await compraService.AddAsync(compra);
+            var facturaCompraViewReport = new FacturaCompraViewReport(nuevaCompra);
+            facturaCompraViewReport.ShowDialog();
         }
     }
 }
