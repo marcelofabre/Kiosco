@@ -9,42 +9,53 @@
     <ContentPage.BindingContext>
         <viewModels:AddEditProductoViewModel/>
     </ContentPage.BindingContext>
-<VerticalStackLayout>
-       <!-- hago la pantalla de carga de productos-->
-        <!--<ActivityIndicator IsRunning="{Binding ActivityStart}"/>
-        <Label Text="Nombre:"/>
-        <Entry Text="{Binding Producto.Nombre}"/>
-        <Label Text="Precio:"/>
-        <Entry Text="{Binding Producto.Precio}"/>
-        <Label Text="Descripción:"/>
-        <Entry Text="{Binding Producto.Descripcion}"/>
-        <Label Text="Cantidad:"/>
-        <Entry Text="{Binding Producto.Cantidad}"/>
-        <Button Text="Guardar"
-                Command="{Binding SaveCommand}"/>-->
 
-      
-            <Label Text="Agregar o editar producto"
-               FontSize="Header"
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Agregar o editar producto"
+               FontSize="32"
+               FontAttributes="Bold"
+               TextColor="#333333"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
+
+        <!-- Nombre del producto con Frame para bordes redondeados -->
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F0F0F5" HasShadow="False">
             <Entry Placeholder="Nombre del producto"
-               Text="{Binding Nombre}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+                   Text="{Binding Nombre}"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   TextColor="#333333"
+                   PlaceholderColor="#A0A0A0"
+                   HeightRequest="50"/>
+        </Frame>
+
+        <!-- Precio del producto con Frame para bordes redondeados -->
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F0F0F5" HasShadow="False">
             <Entry Placeholder="Precio del producto"
-               Text="{Binding Precio}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+                   Text="{Binding Precio}"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   TextColor="#333333"
+                   PlaceholderColor="#A0A0A0"
+                   Keyboard="Numeric"
+                   HeightRequest="50"/>
+        </Frame>
 
         <CheckBox IsChecked="{Binding Oferta}"
                   HorizontalOptions="Center"
-                  VerticalOptions="Center"/>
-        
+                  VerticalOptions="Center"
+                  Color="#6200EA"/>
+
         <Button Text="Guardar"
                 Command="{Binding SaveProductCommand}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"/>
-       
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                BackgroundColor="#6200EA"
+                TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                CornerRadius="10"
+                Margin="0,20"/>
     </VerticalStackLayout>
 </ContentPage>

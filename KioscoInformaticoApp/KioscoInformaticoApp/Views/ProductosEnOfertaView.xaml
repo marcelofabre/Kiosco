@@ -4,39 +4,89 @@
              xmlns:viewModels="clr-namespace:KioscoInformaticoApp.ViewModels"
              x:Class="KioscoInformaticoApp.Views.ProductosEnOfertaView"
              Title="ProductosEnOfertaView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F3F4F6">
+    <!-- Fondo principal de la página -->
+
     <ContentPage.BindingContext>
         <viewModels:ProductosEnOfertaViewModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Label 
-            Text="LISTA DE PRODUCTOS EN OFERTA"
-            VerticalOptions="Center" 
-            FontSize="Header"
-            HorizontalOptions="Center" />
-        <Entry Placeholder="Buscar productos..."
-               Text="{Binding FilterProducts}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-        <ActivityIndicator IsRunning="{Binding ActivityStart}"/>
-        <ScrollView HeightRequest="300" HorizontalOptions="Center">
-            <ListView 
-                      ItemsSource="{Binding Products}"
-                      SelectionMode="Single"
-                      IsPullToRefreshEnabled="True"
-                      RefreshCommand="{Binding GetProductsCommand}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Nombre}"
-                                  Detail="{Binding Precio}"
-                                 />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
 
+            <!-- Título de la lista -->
+            <Label Text="LISTA DE PRODUCTOS EN OFERTA"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#4A4A68"
+                   HorizontalOptions="Center"/>
 
+            <!-- Barra de búsqueda con borde redondeado y fondo suave -->
+            <Frame CornerRadius="10" Padding="0" BackgroundColor="#E1E3EB" HasShadow="False">
+                <Entry Placeholder="Buscar productos..."
+                       Text="{Binding FilterProducts}"
+                       BackgroundColor="Transparent"
+                       TextColor="#333333"
+                       PlaceholderColor="#A0A0A0"
+                       HorizontalOptions="Fill"/>
+            </Frame>
 
-        </ScrollView>
-    </VerticalStackLayout>
+            <!-- Indicador de carga -->
+            <ActivityIndicator IsRunning="{Binding ActivityStart}"
+                               Color="#6D28D9"
+                               VerticalOptions="Center"/>
+
+            <!-- Lista de productos con fondo claro y borde redondeado -->
+            <Frame BackgroundColor="#FFFFFF"
+                   CornerRadius="10"
+                   HasShadow="True">
+                <ListView ItemsSource="{Binding Products}"
+                          SelectionMode="Single"
+                          IsPullToRefreshEnabled="True"
+                          RefreshCommand="{Binding GetProductsCommand}"
+                          SeparatorColor="#E0E0E0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="10" BackgroundColor="#F7F9FC" CornerRadius="5">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nombre}"
+                                               FontSize="18"
+                                               TextColor="#333333"/>
+                                        <Label Text="{Binding Precio, StringFormat='{0:C}'}"
+                                               FontSize="14"
+                                               TextColor="#6D28D9"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+
+            <!-- Botón para agregar producto con fondo degradado -->
+            <Frame Padding="0" CornerRadius="10" HasShadow="True" BackgroundColor="#6D28D9">
+                <Button Text="Agregar producto"
+                        Command="{Binding AddProducCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"/>
+            </Frame>
+
+            <!-- Botón para editar producto con fondo suave -->
+            <Frame Padding="0" CornerRadius="10" HasShadow="True" BackgroundColor="#C0C0C0">
+                <Button Text="Editar producto"
+                        Command="{Binding EditProducCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"/>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
