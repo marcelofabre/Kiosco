@@ -33,7 +33,7 @@
         <!-- Precio del producto con Frame para bordes redondeados -->
         <Frame CornerRadius="10" Padding="0" BackgroundColor="#F0F0F5" HasShadow="False">
             <Entry Placeholder="Precio del producto"
-                   Text="{Binding Precio}"
+                   Text="{Binding Precio, StringFormat='{}{0:F2}'}"
                    HorizontalOptions="Fill"
                    VerticalOptions="Center"
                    TextColor="#333333"

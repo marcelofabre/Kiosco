@@ -10,8 +10,11 @@ namespace KioscoInformaticoApp
         {
             InitializeComponent();
 
+            MainPage = new KioscoShell();
+
             //MainPage = new AppShell();
-            MainPage = new NavigationPage(new InicioSesionView());
+            //MainPage = new NavigationPage(new InicioSesionView());
+
             //MainPage= new ProductosEnOfertaView();
             /////CÓDIGO QUE para preparar la recepción de mensajes y la llamada al método RecibirMensaje
 

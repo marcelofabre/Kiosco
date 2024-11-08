@@ -5,8 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:KioscoInformaticoApp"
     xmlns:views="clr-namespace:KioscoInformaticoApp.Views"
+    xmlns:viewsmodels="clr-namespace:KioscoInformaticoApp.ViewModels"
     xmlns:contentviews="clr-namespace:KioscoInformaticoApp.ContentViews"
-    Shell.FlyoutBehavior="Flyout"
+    FlyoutBehavior="Flyout"
     Title="KioscoInformaticoApp"
     FlyoutBackgroundImage="photo.jpg"
     FlyoutBackgroundImageAspect="AspectFill"
@@ -14,7 +15,10 @@
 
 
 
-
+    <Shell.BindingContext>
+        <viewsmodels:KioscoShellViewModel />
+    </Shell.BindingContext>
+    
     <Shell.FlyoutHeader>
         <contentviews:FlyoutHeader />
     </Shell.FlyoutHeader>
@@ -24,7 +28,8 @@
     </Shell.FlyoutFooter>
 
     <FlyoutItem Route="kiosco_app"
-            FlyoutDisplayOptions="AsMultipleItems">
+            FlyoutDisplayOptions="AsMultipleItems" x:Name="FlyoutItemsPrincipal">
+        
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate local:MainPage}"
@@ -38,9 +43,9 @@
                 Title="Productos en Oferta"
                 Icon="random.png"
                 ContentTemplate="{DataTemplate views:ProductosEnOfertaView}"
-                Route="Productos en oferta" />
+                Route="ProductosEnOferta" />
             <ShellContent
-                Title="ListaProductos"
+                Title="Lista de Productos"
                 Icon="cat.png"
                 ContentTemplate="{DataTemplate views:ProductosView}"
                 Route="ListaProductos" />
@@ -48,13 +53,17 @@
                 Title="Agregar producto"
                 Icon="dog.png"
                 ContentTemplate="{DataTemplate views:AddEditProductoView}"
-                Route="Agregar producto" />
+                Route="AgregarEditarProducto"/>
         </Tab>
-        
-        
     </FlyoutItem>
     <MenuItem Text="Cerrar sesión"
-              IconImageSource="exit.png">
-    </MenuItem>
+              IconImageSource="exit.png"/>
+
+    <ShellContent
+        Title="Iniciar sesión"
+        ContentTemplate="{DataTemplate views:InicioSesionView}"
+        Route="login" 
+        IsVisible="{Binding IsUserLogout}"
+        />
 
 </Shell>

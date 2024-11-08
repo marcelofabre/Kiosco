@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using KioscoInformaticoApp.Class;
+using KioscoInformaticoApp.ViewModels;
 
 namespace KioscoInformaticoApp
 {
@@ -8,36 +9,24 @@ namespace KioscoInformaticoApp
         public KioscoShell()
         {
             InitializeComponent();
-            //WeakReferenceMessenger.Default.Register<Message>(this, (r, mensaje) =>
-            //{
-            //    OnReceiveMessage(mensaje);
-            //});
+            FlyoutItemsPrincipal.IsVisible = false; // Oculta el menú lateral
+        }
+
+        //private async void OnReceiveMessage(Message mensaje)
+        public void EnableAppAfterLogin()
+        {
+            FlyoutBehavior = FlyoutBehavior.Flyout; // Habilita el FlyOut
+            FlyoutItemsPrincipal.IsVisible = true; // Muestra el menú lateral
+            Shell.Current.GoToAsync("//MainPage"); // Navega a la página principal
+            var viewmodel = this.BindingContext as KioscoShellViewModel;//Se obtiene el viewmodel de la vista
+            viewmodel.IsUserLogout = false;//Se cambia el estado de la variable que controla el estado del usuario
+        }
+        public void DisableAppAfterLogin()
+        {
+            FlyoutBehavior = FlyoutBehavior.Disabled; // Deshabilita el FlyOut
+            FlyoutItemsPrincipal.IsVisible = false; // Oculta el menú lateral
+            Shell.Current.GoToAsync("//Login"); // Navega a la página de login
         }
     }
-
-
-    //private async void OnReceiveMessage(Message mensaje)
-    //{
-    //    if (mensaje.Value == "AbrirProducto")
-    //    {
-    //        //await Navigation.PushAsync(new ProductosView());
-    //    }
-    //    if (mensaje.Value == "AbrirOfertas")
-    //    {
-    //        //await Navigation.PushAsync(new ProductosEnOfertaView());
-    //    }
-
-    //    if (mensaje.Value == "AgregarProducto")
-    //    {
-    //        //await Navigation.PushAsync(new AddEditProductoView(mensaje.ProductoAEditar));
-    //    }
-
-    //    if (mensaje.Value == "EditarProducto")
-    //    {
-    //        //await Navigation.PushAsync(new AddEditProductoView(mensaje.ProductoAEditar));
-    //    }
-
-   
-
-    //}
+    
 }

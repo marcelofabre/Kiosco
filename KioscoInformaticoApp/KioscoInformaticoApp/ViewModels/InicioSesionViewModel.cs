@@ -59,7 +59,9 @@ namespace KioscoInformaticoApp.ViewModels
 
         public void Login(object obj)
         {
-            WeakReferenceMessenger.Default.Send(new Message("AbrirAppShell"));
+         var shellkiosco =(KioscoShell)App.Current.MainPage;
+            shellkiosco.EnableAppAfterLogin();
+
         }
     }
 }
