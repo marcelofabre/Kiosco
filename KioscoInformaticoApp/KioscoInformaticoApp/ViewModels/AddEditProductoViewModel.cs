@@ -29,11 +29,19 @@ namespace KioscoInformaticoApp.ViewModels
 
         private void SettingData()
         {
-            
+            if (editProduct == null)
+            {
+                Nombre = string.Empty;
+                Precio = 0;
+                Oferta = false;
+            }
+
+            else
+            {
                 Nombre = editProduct.Nombre;
                 Precio = editProduct.Precio;
                 Oferta = editProduct.Oferta;
-            
+            }
         }
 
         private string nombre;

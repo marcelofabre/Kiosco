@@ -10,6 +10,12 @@ namespace KioscoInformaticoApp
         {
             InitializeComponent();
             FlyoutItemsPrincipal.IsVisible = false; // Oculta el menú lateral
+            RegisterRoute();
+        }
+
+        private void RegisterRoute()
+        {
+            Routing.RegisterRoute("register");
         }
 
         //private async void OnReceiveMessage(Message mensaje)
