@@ -45,7 +45,8 @@
         firebase.initializeApp(firebaseConfig);
         console.log(firebase);
         window.firebaseAuth = {
-            signInWithEmailPassword: async function (email, password) {
+            signInWithEmailPassword: async function (email, password)
+            {
                 try {
                     const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
                     return userCredential.user.uid;
@@ -57,16 +58,17 @@
 
             createUserWithEmailAndPassword: async function (email, password, displayName) {
                 try {
-                    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
-                        .then((credentialUser) => {
-                            // El usuario se ha creado correctamente
-                            const user = credentialUser.user;
+                    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                    
+                      
+                        // El usuario se ha creado correctamente
+                            const user = userCredential.user;
 
                             // Actualizar el perfil del usuario
                             user.updateProfile({
                                 displayName: displayName
                             });
-                            return credentialUser.user.uid;
+                            return userCredential.user.uid;
                             // Enviar correo de verificación
                             //user.sendEmailVerification()
                             //    .then(() => {
@@ -75,10 +77,7 @@
                             //    .catch((error) => {
                             //        console.error('Error al enviar el correo de verificación:', error);
                             //    });
-                        })
-                        .catch((error) => {
-                            console.error('Error al crear el usuario:', error);
-                        });
+                        
                     
                    
                 } catch (error) {
@@ -90,8 +89,6 @@
             signOut: async function () {
                 await firebase.auth().signOut();
             }
-
-
         };
         
         window.localStorageHelper = {

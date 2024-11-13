@@ -17,12 +17,14 @@ public partial class Producto
     public bool Eliminado { get; set; } = false;
     public bool Oferta { get; set; } = false;
 
+    public string? imagen { get; set; }=string.Empty;
     public override string ToString()
     {
         return Nombre;
     }
 
-
+    //dotnet ef migrations add AgregamosImagenAProductos
+    //dotnet ef database update
     //crear la conexion de la base de datos con heidi
     //usuario:smartsof_marcelofabre
     //contraseña:smartsof_marcelofabre
